@@ -43,6 +43,14 @@
 			<version>2.2.1-b03</version>
 		</dependency>
 
+		<!-- primefaces -->
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>5.2</version>
+		</dependency>
+
+
 		<!-- Spring Core -->
 		<dependency>
 			<groupId>org.springframework</groupId>
