@@ -1,15 +1,13 @@
 package com.hostal.controller;
 
+import com.hostal.manager.UserManager;
+import com.hostal.model.UserModel;
+
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.hostal.manager.UserManager;
-import com.hostal.model.UserModel;
-
-@ManagedBean
 @Named
 public class UserController {
 
@@ -31,7 +29,7 @@ public class UserController {
 	}
 
 	/**
-	 * @return
+	 * @return a String
 	 */
 	public String register() {
 		try {
