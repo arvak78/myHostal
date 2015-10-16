@@ -39,7 +39,7 @@ public class UserDAO {
 		}
 		Set<Role> roles = new HashSet<Role>();
 		roles.add(role);
-		user.setRoles(roles);//ab
+		user.setRoles(roles);//aaa
 		sessionFactory.getCurrentSession().save(user);
 	}
 }
