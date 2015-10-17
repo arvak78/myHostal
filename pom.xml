@@ -3,8 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.hostal</groupId>
 	<artifactId>hostal</artifactId>
-	<packaging>war</packaging>
+	<packaging>pom</packaging>
 	<version>1.0</version>
+	<modules>
+		<module>login</module>
+	</modules>
 	<name>hostal</name>
 
 	<properties>
