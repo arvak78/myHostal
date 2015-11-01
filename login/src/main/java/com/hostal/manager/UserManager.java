@@ -1,7 +1,7 @@
-package hostal.manager;
+package com.hostal.manager;
 
-import hostal.dao.UserDAO;
-import hostal.model.UserModel;
+import com.hostal.dao.UserDAO;
+import com.hostal.model.UserModel;
 
 import javax.inject.Inject;
 import javax.inject.Named;

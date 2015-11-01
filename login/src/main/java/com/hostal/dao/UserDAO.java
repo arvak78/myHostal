@@ -1,9 +1,9 @@
-package hostal.dao;
+package com.hostal.dao;
 
 
-import hostal.model.UserModel;
-import hostal.persistence.Role;
-import hostal.persistence.User;
+import com.hostal.model.UserModel;
+import com.hostal.persistence.Role;
+import com.hostal.persistence.User;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 

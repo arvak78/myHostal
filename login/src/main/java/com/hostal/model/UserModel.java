@@ -1,4 +1,4 @@
-package hostal.model;
+package com.hostal.model;
 
 public class UserModel {
 

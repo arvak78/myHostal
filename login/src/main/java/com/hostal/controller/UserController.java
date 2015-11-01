@@ -1,7 +1,7 @@
-package hostal.controller;
+package com.hostal.controller;
 
-import hostal.manager.UserManager;
-import hostal.model.UserModel;
+import com.hostal.manager.UserManager;
+import com.hostal.model.UserModel;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;

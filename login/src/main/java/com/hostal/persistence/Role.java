@@ -1,4 +1,4 @@
-package hostal.persistence;
+package com.hostal.persistence;
 
 import javax.persistence.*;
 
