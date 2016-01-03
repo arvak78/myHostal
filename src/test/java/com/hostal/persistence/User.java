@@ -1,19 +1,19 @@
 package com.hostal.persistence;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
- * Entity class
+ * Created by Manel on 03/01/2016.
  */
 @Entity
 public class User {
     private int userId;
     private String login;
     private String pwd;
-    private Integer enabled;
-    //private Set<Role> roles = new HashSet<Role>(0);
+    private Byte enabled;
 
     @Id
     @Column(name = "USER_ID")
@@ -47,15 +47,13 @@ public class User {
 
     @Basic
     @Column(name = "ENABLED")
-    public Integer getEnabled() {
+    public Byte getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(Integer enabled) {
+    public void setEnabled(Byte enabled) {
         this.enabled = enabled;
     }
-
-
 
     @Override
     public boolean equals(Object o) {
