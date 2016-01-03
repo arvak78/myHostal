@@ -36,9 +36,7 @@ public class UserDAO {
 			role.setLabel("ROLE FOR SIMPLE ACCESS");
 			sessionFactory.getCurrentSession().save(role);
 		}
-		Set<Role> roles = new HashSet<Role>();
-		roles.add(role);
-		//user.setRoles(roles);
+
 		sessionFactory.getCurrentSession().save(user);
 	}
 }
