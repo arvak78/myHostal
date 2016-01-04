@@ -9,6 +9,10 @@
 		<el-resolver>
     		    org.springframework.web.jsf.el.SpringBeanFacesELResolver
 		</el-resolver>
+		<resource-bundle>
+			<base-name>com.hostal.resources.hostal</base-name>
+			<var>msg</var>
+		</resource-bundle>
   	</application>
   	
 </faces-config>

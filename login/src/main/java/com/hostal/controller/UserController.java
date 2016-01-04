@@ -2,25 +2,19 @@ package com.hostal.controller;
 
 import com.hostal.manager.UserManager;
 import com.hostal.model.UserModel;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import javax.inject.Named;
 
-@ManagedBean
 @Named
 public class UserController {
 
-	@Inject
-	public UserManager userManager;
+	@Autowired
+	private UserManager userManager;
 
 	private UserModel model = new UserModel();
-
-	public void setUserManager(UserManager userManager) {
-		this.userManager = userManager;
-	}
 
 	public UserModel getModel() {
 		return model;

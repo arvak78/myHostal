@@ -1,27 +1,22 @@
 package com.hostal.dao;
 
 
+import com.hostal.dao.interfaces.UserDAOInterface;
 import com.hostal.model.UserModel;
 import com.hostal.persistence.Role;
 import com.hostal.persistence.User;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.HashSet;
-import java.util.Set;
 
 @Named
 @Transactional("transactionManager")
-public class UserDAO {
+public class UserDAOImpl implements UserDAOInterface {
 
-	@Inject
+	@Autowired
 	private SessionFactory sessionFactory;
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	public void addUser(UserModel model) {
 		User user = new User();
