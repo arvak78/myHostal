@@ -7,7 +7,7 @@
 
 <c:forEach var="room" items="#{roomController.allRooms}">
 
-    <div class="roomCell">
+    <div class="roomCell" onclick="PF('client').show();">
         <div class="ribbon-wrapper">
             <c:choose>
                 <c:when test="#{room.state == 'BUSY'}">
@@ -25,14 +25,18 @@
         </div>
 
         <h:panelGrid columns="1" cellpadding="5">
-            <div class="fa fa-user user-male" onmousemove="PF('dlg1').show();" onmouseout="PF('dlg1').hide();" />
+            <div class="fa fa-user user-male" onmousemove="PF('client').show();" onmouseout="PF('client').hide();" />
         </h:panelGrid>
     </div>
 
 </c:forEach>
 
-<p:dialog header="Manel Garcia" widgetVar="dlg1" minHeight="40" position="170,220">
-    <h:outputText value="Dni: 43113098" />
+<a id="external" href="http://www.primefaces.org">
+    PrimeFaces Home
+</a>
+
+<p:dialog header="#{msg['client.form.new.header']}" widgetVar="client" minHeight="40" position="170,220">
+    <h:outputText value="Hab: #{room.roomNumber}" />
 </p:dialog>
 
 
