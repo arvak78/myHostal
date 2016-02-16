@@ -1,47 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<body>
+    <c:forEach var="room" items="#{roomController.allRooms}">
+        <div class="roomCell">
+            <div class="ribbon-wrapper">
+                <c:choose>
+                    <c:when test="#{room.state == 'BUSY'}">
+                        <div class="ribbon-red">#{msg['room.state.busy']}</div>
+                    </c:when>
+                    <c:when test="#{room.state == 'FREE'}">
+                        <div class="ribbon-green">#{msg['room.state.free']}</div>
+                    </c:when><c:when test="#{room.state == 'DIRTY'}">
+                        <div class="ribbon-yellow">#{msg['room.state.dirty']}</div>
+                    </c:when>
+                </c:choose>
+            </div>
+            <div class="roomNumber">
+                <span>#{room.roomNumber}</span>
+            </div>
 
-<c:forEach var="room" items="#{roomController.allRooms}">
-
-    <div class="roomCell" onclick="PF('client').show();">
-        <div class="ribbon-wrapper">
-            <c:choose>
-                <c:when test="#{room.state == 'BUSY'}">
-                    <div class="ribbon-red">#{msg['room.state.busy']}</div>
-                </c:when>
-                <c:when test="#{room.state == 'FREE'}">
-                    <div class="ribbon-green">#{msg['room.state.free']}</div>
-                </c:when><c:when test="#{room.state == 'DIRTY'}">
-                    <div class="ribbon-yellow">#{msg['room.state.dirty']}</div>
-                </c:when>
-            </c:choose>
+            <c:forEach var="client" items="#{room.stay.clientsSet}">
+                <h:panelGrid columns="1" cellpadding="5" >
+                    <!--<div class="fa fa-user user-male" onmousemove="$('#myModal').modal();" />-->
+                    <a class="fa fa-user user-male" href="#" data-toggle="popover" data-placement="bottom"
+                       title="#{client.name} #{client.surname}" data-content="#{roomController.getClientInfo(client)}" />
+                </h:panelGrid>
+            </c:forEach>
         </div>
-        <div class="roomNumber">
-            <span>#{room.roomNumber}</span>
-        </div>
 
-        <h:panelGrid columns="1" cellpadding="5">
-            <div class="fa fa-user user-male" onmousemove="PF('client').show();" onmouseout="PF('client').hide();" />
-        </h:panelGrid>
+    </c:forEach>
+
+    <button style="font-size:24px">Button <i class="fa fa-hotel"></i></button>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <ui:include src="stayPopup.xhtml"/>
     </div>
 
-</c:forEach>
-
-<a id="external" href="http://www.primefaces.org">
-    PrimeFaces Home
-</a>
-
-<p:dialog header="#{msg['client.form.new.header']}" widgetVar="client" minHeight="40" position="170,220">
-    <h:outputText value="Hab: #{room.roomNumber}" />
-</p:dialog>
 
 
-<p>Used on a button:</p>
-<button style="font-size:24px">Button <i class="fa fa-hotel"></i></button>
-
-</body>
-</html> 
+</html>

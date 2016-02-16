@@ -12,6 +12,7 @@ public class Room {
     private String roomNumber;
     private RoomType roomType;
     private String state;
+    private Stay stay;
 
     @Id
     @Column(name = "id")
@@ -51,5 +52,15 @@ public class Room {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    public Stay getStay() {
+        return stay;
+    }
+
+    public void setStay(Stay stay) {
+        this.stay = stay;
     }
 }

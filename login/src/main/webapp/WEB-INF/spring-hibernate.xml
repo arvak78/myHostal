@@ -31,6 +31,8 @@
 				<value>com.hostal.persistence.User</value>
 				<value>com.hostal.persistence.RoomType</value>
 				<value>com.hostal.persistence.Room</value>
+				<value>com.hostal.persistence.Stay</value>
+				<value>com.hostal.persistence.Clients</value>
 			</list>
 		</property>
 	</bean>
