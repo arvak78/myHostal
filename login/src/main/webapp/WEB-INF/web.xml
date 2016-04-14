@@ -7,6 +7,13 @@
 	<display-name>JSF2-Spring-Hibernate-Example</display-name>
 
 	<servlet>
+		<servlet-name>crunchify</servlet-name>
+		<servlet-class>
+			org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
 		<servlet-name>JSF Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
@@ -19,6 +26,12 @@
 		<servlet-name>JSF Servlet</servlet-name>
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>crunchify</servlet-name>
+		<url-pattern>/welcome.jsp</url-pattern>
+		<!--<url-pattern>/*.jsp</url-pattern>-->
+	</servlet-mapping>
+
 
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
