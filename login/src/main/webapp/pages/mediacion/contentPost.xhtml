@@ -1,0 +1,48 @@
+<div class="col-lg-9 col-md-8 col-sm-6 col-xs-12">
+
+    <!--Default Section-->
+    <section class="default-section blog-section pt-0 pb-0">
+        <div class="row clearfix">
+
+            <c:forEach var="blog" items="#{blogController.allPosts}">
+                <!--Blog Post-->
+                <div class="col-md-6 col-sm-6 col-xs-12 featured-blog-post wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1500ms">
+                    <article class="inner-box hvr-float-shadow">
+                        <figure class="image">
+                            <a href="blog-detail.html"><img src="../../resources/images/blog/${blog.urlImage}" alt=""/></a>
+                        </figure>
+                        <div class="post-lower">
+                            <div class="post-header">
+                                <div class="date"><span class="day">15</span><br/>APR</div>
+                                <h3 class="title"><a href="blog-detail.html">${blog.description}</a></h3>
+                                <ul class="post-info">
+                                    <li><span class="icon fa fa-user"></span> <a href="#">${blog.user}</a></li>
+                                    <li><span class="icon fa fa-tag"></span> <a href="#">Civil Rights</a></li>
+                                </ul>
+                            </div>
+                            <div class="post-desc">
+                                <p>${fn:substring(blog.body, 0, 150)} ...</p>
+                                <div class="text-right"><a class="color-theme fs-14" href="blog-detail.html">Read more</a></div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+            </c:forEach>
+
+        </div>
+        <!--Pagination-->
+        <div class="pager-outer">
+            <ul class="pagination mt-0 mb-50">
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li class="active"><a href="#">3</a></li>
+                <li><a href="#">-</a></li>
+                <li><a href="#">7</a></li>
+                <li><a href="#">8</a></li>
+                <li><a href="#">Next</a></li>
+            </ul>
+        </div>
+    </section>
+
+</div>

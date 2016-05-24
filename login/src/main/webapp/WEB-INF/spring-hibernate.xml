@@ -33,6 +33,7 @@
 				<value>com.hostal.persistence.Room</value>
 				<value>com.hostal.persistence.Stay</value>
 				<value>com.hostal.persistence.Clients</value>
+				<value>com.hostal.persistence.Posts</value>
 			</list>
 		</property>
 	</bean>

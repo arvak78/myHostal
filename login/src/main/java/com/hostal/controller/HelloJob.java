@@ -7,6 +7,9 @@ import org.quartz.JobExecutionException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+/**
+ * Example of Quartz scheduler
+ */
 public class HelloJob implements Job
 {
 	public void execute(JobExecutionContext context)

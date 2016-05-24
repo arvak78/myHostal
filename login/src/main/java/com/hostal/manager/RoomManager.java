@@ -14,7 +14,7 @@ import java.util.List;
 public class RoomManager {
 
     @Inject
-    public RoomDAOInterface roomDAO;
+    private RoomDAOInterface roomDAO;
 
     public List<Room> getAllRooms() {
         return roomDAO.getAllRooms();
