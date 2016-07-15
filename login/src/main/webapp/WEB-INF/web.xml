@@ -28,9 +28,12 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>crunchify</servlet-name>
-		<url-pattern>/</url-pattern>
+		<!--<url-pattern>/</url-pattern>-->
 		<!--<url-pattern>/welcome.jsp</url-pattern>-->
-		<!--<url-pattern>/*.jsp</url-pattern>-->
+		<!--<url-pattern>/hello/</url-pattern>-->
+		<!--<url-pattern>/*</url-pattern>-->
+		<!--<url-pattern>/hello/**</url-pattern>-->
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
 
