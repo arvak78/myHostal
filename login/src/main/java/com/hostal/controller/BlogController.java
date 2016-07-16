@@ -1,18 +1,17 @@
 package com.hostal.controller;
 
+import com.hostal.form.PostsForm;
 import com.hostal.manager.PostManager;
 import com.hostal.persistence.Posts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,6 +21,7 @@ import java.util.List;
 @RequestMapping("/blog")
 //@Named
 public class BlogController {
+
 
     @Autowired
     private PostManager postManager;
@@ -40,7 +40,9 @@ public class BlogController {
     @RequestMapping("/posts")
     public ModelAndView showPosts() {
 
-        return new ModelAndView("blog", "misposts", allPosts);
+        PostsForm postsForm = getPostForm();
+
+        return new ModelAndView("blog", "postsForm", postsForm);
     }
 
     public void setAllPosts(List<Posts> allPosts) {
@@ -48,18 +50,23 @@ public class BlogController {
     }
 
     @ModelAttribute("timeline")
-    public List<Posts> populateTimeline() {
-        return allPosts;
+    public PostsForm getPostForm() {
+
+        PostsForm postsForm = new PostsForm();
+        postsForm.setPosts(allPosts);
+
+        return postsForm;
     }
 
-    @RequestMapping(value="/paint", method = RequestMethod.POST)
-    public ModelAndView paintSelectedPost(@ModelAttribute("post") Posts post, BindingResult result, ModelMap model) {
+    @RequestMapping(value="/paint/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public ModelAndView paintSelectedPost(@ModelAttribute("timeline") PostsForm post, ModelMap model, @PathVariable int id) {
 /* public ModelAndView paintSelectedPost(@RequestParam("user") String user) { */
 
 
-        System.out.println();
 
-        String message = "aaa";
+
+        String message = "aaa" + id;
 
 
         return new ModelAndView("blog", "torna", message);
