@@ -25,8 +25,8 @@ public class BlogController {
 
     @Autowired
     private PostManager postManager;
-
     private List<Posts> allPosts;
+    private Posts selectedPost;
 
     @PostConstruct
     private void init() {
@@ -42,8 +42,15 @@ public class BlogController {
 
         PostsForm postsForm = getPostForm();
 
-        return new ModelAndView("blog", "postsForm", postsForm);
+        return new ModelAndView("layout", "postsForm", postsForm);
     }
+
+    @RequestMapping("/post")
+    public ModelAndView post() {
+
+        return new ModelAndView("post", "post", selectedPost);
+    }
+
 
     public void setAllPosts(List<Posts> allPosts) {
         this.allPosts = allPosts;
@@ -60,16 +67,16 @@ public class BlogController {
 
     @RequestMapping(value="/paint/{id}", method = RequestMethod.POST)
     @ResponseBody
+    @ModelAttribute("mipost")
     public ModelAndView paintSelectedPost(@ModelAttribute("timeline") PostsForm post, ModelMap model, @PathVariable int id) {
-/* public ModelAndView paintSelectedPost(@RequestParam("user") String user) { */
 
+        for (Posts mipost : post.getPosts()) {
+            if (id == mipost.getId()) {
+                selectedPost = mipost;
+            }
+        }
 
-
-
-        String message = "aaa" + id;
-
-
-        return new ModelAndView("blog", "torna", message);
+        return new ModelAndView("blog");
 
     }
 
