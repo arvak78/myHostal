@@ -30,7 +30,7 @@
                     <section class="default-section blog-section pt-0 pb-0">
                         <div class="row clearfix">
 
-                            <form:form action="${pageContext.request.contextPath}/blog/paint" method="post" modelAttribute="postsForm" >
+                            <form:form action="${pageContext.request.contextPath}/blog/paint" method="post"  >
 
                                 <table>
                                     <tr>
