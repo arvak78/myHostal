@@ -22,16 +22,16 @@
                                 <div class="post-lower">
                                     <div class="post-header">
                                         <div class="date"><span class="day">18</span><br>APR</div>
-                                        <h3 class="title"><a href="blog-detail.html">Blog post with image</a></h3>
+                                        <h3 class="title"><a href="blog-detail.html">${postsForm.selectedPost.description}</a></h3>
                                         <ul class="post-info">
-                                            <li><span class="icon fa fa-user"></span> <a href="#">${post.user}</a></li>
-                                            <li><span class="icon fa fa-tag"></span> <a href="#">Civil Right</a></li>
-                                            <li><span class="icon fa fa-comment-o"></span> <a href="#"> 22 comments</a></li>
-                                            <li><span class="icon fa fa-calendar-o"></span> <a href="#">22th Jan, 2016 - 10:21 AM</a></li>
+                                            <li><span class="icon fa fa-user"></span> <a href="#">${postsForm.selectedPost.user}</a></li>
+                                            <li><span class="icon fa fa-tag"></span> <a href="#">${postsForm.selectedPost.categories.name}</a></li>
+                                            <li><span class="icon fa fa-comment-o"></span> <a href="#"> ${postsForm.selectedPost.visits} comentarios</a></li>
+                                            <li><span class="icon fa fa-calendar-o"></span> <a href="#">${postsForm.selectedPost.created}</a></li>
                                         </ul>
                                     </div>
                                     <div class="post-desc">
-                                        ${post.body}
+                                        ${postsForm.selectedPost.body}
                                     </div>
                                 </div>
                             </article>
@@ -40,7 +40,7 @@
                             <div class="about-author mt-60 wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
                                 <div class="author-desc">
                                     <div class="author-thumb"><img src="images/resource/author-thumb.jpg" alt=""></div>
-                                    <div class="author-info"><strong>${post.user}</strong> /  24 Blogposts / Entrepreneur / works for Company Inc.</div>
+                                    <div class="author-info"><strong>${postsForm.selectedPost.user}</strong> /  24 Blogposts / Entrepreneur / works for Company Inc.</div>
                                     <div class="text">“Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio.”</div>
                                 </div>
                             </div>
@@ -119,3 +119,8 @@
 
             </div>
             <!--Content Side-->
+            <c:import url="/WEB-INF/blogSideBar.jsp" />
+        </div>
+    </div>
+</div>
+

@@ -4,10 +4,12 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="connection.url">jdbc:mysql://localhost:3306/hostal</property>
+    <property name="connection.url">jdbc:mysql://localhost:3306/hostal?zeroDateTimeBehavior=convertToNull</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
     <mapping class="com.hostal.persistence.Role"/>
     <mapping class="com.hostal.persistence.User"/>
+    <mapping class="com.hostal.persistence.Posts"/>
+    <mapping class="com.hostal.persistence.Categories"/>
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>

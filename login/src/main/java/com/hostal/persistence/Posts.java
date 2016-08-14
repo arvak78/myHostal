@@ -1,9 +1,10 @@
 package com.hostal.persistence;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.hibernate.annotations.Type;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by Manel on 14/04/2016.
@@ -16,6 +17,12 @@ public class Posts {
     private String body;
     private int visits;
     private String urlImage;
+    private Categories categories;
+
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created", columnDefinition="DATETIME")
+    private Date created;
 
     @Id
     @Column(name = "id")
@@ -75,6 +82,28 @@ public class Posts {
 
     public void setUrlImage(String urlImage) {
         this.urlImage = urlImage;
+    }
+
+    @Basic
+    @Column(name = "created")
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    @OneToOne
+    @JoinTable (name="categories",
+            joinColumns=@JoinColumn(name="id"),
+            inverseJoinColumns=@JoinColumn(name="id"))
+    public Categories getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Categories categories) {
+        this.categories = categories;
     }
 
     @Override

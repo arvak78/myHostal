@@ -20,5 +20,17 @@ public class PostManager {
         return postDAO.getAllPosts();
     }
 
+    public List<Posts> searchByWord(String search) {
+        return postDAO.searchPostsByWord(search);
+    }
+
+    public List<Posts> searchByCategories(String category) {
+        return postDAO.getPostsByCategory(category);
+    }
+
+    public void addVisit(int id) {
+        postDAO.addVisit(id);
+    }
+
 
 }

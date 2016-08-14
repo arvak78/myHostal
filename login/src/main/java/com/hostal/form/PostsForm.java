@@ -1,5 +1,6 @@
 package com.hostal.form;
 
+import com.hostal.persistence.Categories;
 import com.hostal.persistence.Posts;
 
 import java.util.List;
@@ -10,6 +11,9 @@ import java.util.List;
 public class PostsForm {
 
     private List<Posts> posts;
+    private List<Categories> categories;
+    private String searchWord;
+    private Posts selectedPost;
 
     public List<Posts> getPosts() {
         return posts;
@@ -17,5 +21,29 @@ public class PostsForm {
 
     public void setPosts(List<Posts> posts) {
         this.posts = posts;
+    }
+
+    public String getSearchWord() {
+        return searchWord;
+    }
+
+    public void setSearchWord(String searchWord) {
+        this.searchWord = searchWord;
+    }
+
+    public List<Categories> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Categories> categories) {
+        this.categories = categories;
+    }
+
+    public Posts getSelectedPost() {
+        return selectedPost;
+    }
+
+    public void setSelectedPost(Posts selectedPost) {
+        this.selectedPost = selectedPost;
     }
 }

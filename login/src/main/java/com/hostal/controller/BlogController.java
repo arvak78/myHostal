@@ -1,7 +1,9 @@
 package com.hostal.controller;
 
 import com.hostal.form.PostsForm;
+import com.hostal.manager.CategoriesManager;
 import com.hostal.manager.PostManager;
+import com.hostal.persistence.Categories;
 import com.hostal.persistence.Posts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +27,12 @@ public class BlogController {
 
     @Autowired
     private PostManager postManager;
+    @Autowired
+    private CategoriesManager categoriesManager;
+
     private List<Posts> allPosts;
+    private List<Posts> categoryPosts;
+    private List<Categories> categories;
     private Posts selectedPost;
 
     @PostConstruct
@@ -37,6 +44,10 @@ public class BlogController {
         return allPosts;
     }
 
+    public void setAllPosts(List<Posts> allPosts) {
+        this.allPosts = allPosts;
+    }
+
     @RequestMapping("/posts")
     public ModelAndView showPosts() {
 
@@ -45,22 +56,36 @@ public class BlogController {
         return new ModelAndView("layout", "postsForm", postsForm);
     }
 
+    @RequestMapping(value = "/showcategory")
+    public ModelAndView showCategoryPosts() {
+
+        PostsForm postsForm = new PostsForm();
+        postsForm.setPosts(categoryPosts);
+        postsForm.setCategories(categories);
+        postsForm.setSelectedPost(selectedPost);
+
+        return new ModelAndView("blog", "postsForm",postsForm);
+    }
+
     @RequestMapping("/post")
     public ModelAndView post() {
 
-        return new ModelAndView("post", "post", selectedPost);
-    }
+        PostsForm postsForm = new PostsForm();
+        postsForm.setPosts(allPosts);
+        postsForm.setCategories(categories);
+        postsForm.setSelectedPost(selectedPost);
 
-
-    public void setAllPosts(List<Posts> allPosts) {
-        this.allPosts = allPosts;
+        return new ModelAndView("post", "postsForm", postsForm);
     }
 
     @ModelAttribute("timeline")
     public PostsForm getPostForm() {
 
+        categories = categoriesManager.getCategories();
+
         PostsForm postsForm = new PostsForm();
         postsForm.setPosts(allPosts);
+        postsForm.setCategories(categories);
 
         return postsForm;
     }
@@ -73,6 +98,7 @@ public class BlogController {
         for (Posts mipost : post.getPosts()) {
             if (id == mipost.getId()) {
                 selectedPost = mipost;
+                postManager.addVisit(id);
             }
         }
 
@@ -80,5 +106,31 @@ public class BlogController {
 
     }
 
+    @RequestMapping(value="/search", method = RequestMethod.POST)
+    @ResponseBody
+    public ModelAndView searchSomething(@RequestParam String search) {
+
+        List<Posts> postsList = postManager.searchByWord(search);
+        PostsForm postsForm = new PostsForm();
+        postsForm.setPosts(postsList);
+        postsForm.setCategories(categories);
+
+        postsForm.setSearchWord(search);
+
+        return new ModelAndView("layout", "postsForm", postsForm);
+    }
+
+    @RequestMapping(value="/categoryPost/{category}", method = RequestMethod.POST)
+    @ResponseBody
+    public ModelAndView getCategoriesPost(@PathVariable String category) {
+
+        PostsForm postsForm = new PostsForm();
+        categoryPosts = postManager.searchByCategories(category);
+        postsForm.setPosts(categoryPosts);
+        postsForm.setSelectedPost(selectedPost);
+        postsForm.setCategories(categories);
+
+        return new ModelAndView("blog", "postsForm", postsForm);
+    }
 
 }

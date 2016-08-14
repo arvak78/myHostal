@@ -56,7 +56,19 @@
         function DoPost(id){
             $.post("/hello/blog/paint/" + id,
                     function(data, status){
-                        $("#med-container").load("post");
+                        $("#med-container").load("/hello/blog/post/");
+                    });
+        }
+
+        function search() {
+            var search = $("#search").val();
+            $.post("/hello/blog/search/" + search);
+        }
+
+        function getCategory(category) {
+            $.post("/hello/blog/categoryPost/" + category,
+                    function(data, status){
+                        $("#med-container").load("/hello/blog/showcategory/");
                     });
         }
 
@@ -208,8 +220,7 @@
 
     <div id="med-container" class="med-container">
 
-        <%--<jsp:include page="/WEB-INF/blog.jsp" />--%>
-            <c:import url="/WEB-INF/blog.jsp" />
+        <c:import url="/WEB-INF/blog.jsp" />
 
     </div>
 

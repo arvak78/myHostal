@@ -46,10 +46,9 @@
                                                     <div class="post-header">
                                                         <div class="date"><span class="day">15</span><br/>APR</div>
                                                         <h3 class="title"><a href="javascript:DoPost(${blog.id})">${blog.description}</a></h3>
-                                                        <input type="text" name="user" value="${blog.user}"  />
                                                         <ul class="post-info">
                                                             <li><span class="icon fa fa-user"></span> <a href="#">${blog.user}</a></li>
-                                                            <li><span class="icon fa fa-tag"></span> <a href="#">Civil Rights</a></li>
+                                                            <li><span class="icon fa fa-tag"></span> <a href="#">${blog.categories.name}</a></li>
                                                         </ul>
                                                     </div>
                                                     <div class="post-desc">
@@ -82,88 +81,8 @@
                 </div>
                 <!--Content Side-->
 
-                <!--Sidebar-->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <aside class="sidebar">
-
-                        <!-- Search Form -->
-                        <div class="widget search-form">
-
-                            <form method="post" action="blog.html">
-                                <div class="form-group">
-                                    <input type="search" name="search" value="" placeholder="search for something"/>
-                                    <button type="submit" name="submit"><span class="fa fa-search"></span></button>
-                                </div>
-                            </form>
-
-                        </div>
-
-                        <!-- Popular Categories -->
-                        <div class="widget popular-categories wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            <div class="sidebar-title"><h3>Popular Categories</h3></div>
-
-                            <ul class="list">
-                                <li><span class="icon fa fa-angle-right"></span> <a href="#">Civil &amp; Family Rights</a></li>
-                                <li><span class="icon fa fa-angle-right"></span> <a href="#">Laws &amp; Rights</a></li>
-                                <li><span class="icon fa fa-angle-right"></span> <a href="#">Court House</a></li>
-                                <li><span class="icon fa fa-angle-right"></span> <a href="#">Estate Lawyer</a></li>
-                                <li><span class="icon fa fa-angle-right"></span> <a href="#">Police Matter</a></li>
-                            </ul>
-
-                        </div>
-
-                        <!-- Recent Posts -->
-                        <div class="widget recent-posts wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            <div class="sidebar-title"><h3>Recent Posts</h3></div>
-
-                            <div class="post">
-                                <div class="post-thumb"><a href="#"><img src="${pageContext.request.contextPath}/resources/images/resource/thumb-1.jpg" alt=""/></a></div>
-                                <h4><a href="#">It´s all about the right practise</a></h4>
-                                <div class="post-info text-right">11/01/2015 </div>
-                            </div>
-
-                            <div class="post">
-                                <div class="post-thumb"><a href="#"><img src="${pageContext.request.contextPath}/resources/images/resource/thumb-2.jpg" alt=""/></a></div>
-                                <h4><a href="#">Bankruptcy law is the area of federal law</a></h4>
-                                <div class="post-info text-right">11/01/2015 </div>
-                            </div>
-
-                            <div class="post">
-                                <div class="post-thumb"><a href="#"><img src="${pageContext.request.contextPath}/resources/images/resource/thumb-3.jpg" alt=""/></a></div>
-                                <h4><a href="#">Today, many people are learning</a></h4>
-                                <div class="post-info text-right">11/01/2015 </div>
-                            </div>
-
-                        </div>
-
-                        <!-- Recent From Gallery -->
-                        <div class="widget recent-gallery">
-                            <div class="sidebar-title"><h3>Recent From Gallery</h3></div>
-
-                            <div class="clearfix">
-                                <figure class="image"><a href="${pageContext.request.contextPath}/resources/images/resource/image-1.jpg" class="lightbox-image"><img src="${pageContext.request.contextPath}/resources/images/resource/thumb-1.jpg" alt=""/></a></figure>
-                                <figure class="image"><a href="${pageContext.request.contextPath}/resources/images/resource/image-2.jpg" class="lightbox-image"><img src="${pageContext.request.contextPath}/resources/images/resource/thumb-2.jpg" alt=""/></a></figure>
-                                <figure class="image"><a href="${pageContext.request.contextPath}/resources/images/resource/image-1.jpg" class="lightbox-image"><img src="${pageContext.request.contextPath}/resources/images/resource/thumb-3.jpg" alt=""/></a></figure>
-                                <figure class="image"><a href="${pageContext.request.contextPath}/resources/images/resource/image-2.jpg" class="lightbox-image"><img src="${pageContext.request.contextPath}/resources/images/resource/thumb-4.jpg" alt=""/></a></figure>
-                                <figure class="image"><a href="${pageContext.request.contextPath}/resources/images/resource/image-1.jpg" class="lightbox-image"><img src="${pageContext.request.contextPath}/resources/images/resource/thumb-5.jpg" alt=""/></a></figure>
-                                <figure class="image"><a href="${pageContext.request.contextPath}/resources/images/resource/image-2.jpg" class="lightbox-image"><img src="${pageContext.request.contextPath}/resources/images/resource/thumb-6.jpg" alt=""/></a></figure>
-                            </div>
-
-                        </div>
-
-                        <!-- Popular Tags -->
-                        <div class="widget popular-tags">
-                            <div class="sidebar-title"><h3>Popular Tags</h3></div>
-
-                            <a href="#">awesome</a> <a href="#">strategy</a> <a href="#">development</a> <a href="#">css</a> <a href="#">photoshop</a> <a href="#">photography</a> <a href="#">html</a> <a href="#">charity</a> <a href="#">charity</a> <a href="#">organisations</a> <a href="#">php</a> <a href="#">foundation</a> <a href="#">donations</a> <a href="#">money</a> <a href="#">children</a> <a href="#">spendings</a> <a href="#">help</a> <a href="#">housing</a>
-
-                        </div>
-
-                    </aside>
-
-
-                </div>
-                <!--Sidebar-->
+                <!--Side Bar -->
+                <c:import url="/WEB-INF/blogSideBar.jsp" />
 
 
             </div>
