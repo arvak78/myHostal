@@ -5,11 +5,13 @@ import com.hostal.manager.CategoriesManager;
 import com.hostal.manager.PostManager;
 import com.hostal.persistence.Posts;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 /**
  * Created by Manel on 14/04/2016.
@@ -30,17 +32,18 @@ public class BlogController {
     @PostConstruct
     private void init() {
         postsForm = new PostsForm();
-        postsForm.setPosts(postManager.getAllPosts());
         postsForm.setCategories(categoriesManager.getCategories());
     }
 
     @RequestMapping("/posts")
     public ModelAndView showPosts() {
 
-        postsForm.setPosts(postManager.getAllPosts());
+        postsForm.setPosts(new PagedListHolder<Posts>(postManager.getAllPosts(1)));
         postsForm.setSearchWord(null);
 
-        return new ModelAndView("layout", "postsForm", postsForm);
+        ModelAndView modelAndView = new ModelAndView("layout", "postsForm", postsForm);
+
+        return modelAndView;
     }
 
     @RequestMapping(value = "/showcategory")
@@ -59,7 +62,8 @@ public class BlogController {
     @ResponseBody
     public ModelAndView paintSelectedPost(@PathVariable int id) {
 
-        for (Posts mipost : postsForm.getPosts()) {
+
+        for (Posts mipost : postsForm.getPosts().getPageList()) {
             if (id == mipost.getId()) {
                 postsForm.setSelectedPost(mipost);
                 postManager.addVisit(id);
@@ -74,7 +78,7 @@ public class BlogController {
     @ResponseBody
     public ModelAndView searchSomething(@RequestParam String search) {
 
-        postsForm.setPosts(postManager.searchByWord(search));
+        postsForm.setPosts(new PagedListHolder<Posts>(postManager.searchByWord(search)));
         postsForm.setSearchWord(search);
 
         return new ModelAndView("layout", "postsForm", postsForm);
@@ -84,7 +88,7 @@ public class BlogController {
     @ResponseBody
     public ModelAndView getCategoriesPost(@PathVariable String category) {
 
-        postsForm.setPosts(postManager.searchByCategories(category));
+        postsForm.setPosts(new PagedListHolder<Posts>(postManager.searchByCategories(category)));
 
         return new ModelAndView("blog", "postsForm", postsForm);
     }

@@ -2,6 +2,7 @@ package com.hostal.form;
 
 import com.hostal.persistence.Categories;
 import com.hostal.persistence.Posts;
+import org.springframework.beans.support.PagedListHolder;
 
 import java.util.List;
 
@@ -10,16 +11,17 @@ import java.util.List;
  */
 public class PostsForm {
 
-    private List<Posts> posts;
+//    private List<Posts> posts;
+    private PagedListHolder<Posts> posts;
     private List<Categories> categories;
     private String searchWord;
     private Posts selectedPost;
 
-    public List<Posts> getPosts() {
+    public PagedListHolder<Posts> getPosts() {
         return posts;
     }
 
-    public void setPosts(List<Posts> posts) {
+    public void setPosts(PagedListHolder<Posts> posts) {
         this.posts = posts;
     }
 

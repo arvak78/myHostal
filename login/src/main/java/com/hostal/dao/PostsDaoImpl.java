@@ -4,6 +4,7 @@ import com.hostal.dao.interfaces.PostsDaoInterface;
 import com.hostal.persistence.Posts;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Named;
@@ -19,7 +20,7 @@ public class PostsDaoImpl implements PostsDaoInterface {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public List<Posts> getAllPosts() {
+    public List<Posts> getAllPosts(PageRequest pageRequest) {
 
         List<Posts> postList = (List<Posts>)sessionFactory.getCurrentSession().createQuery("from Posts ").list();
 

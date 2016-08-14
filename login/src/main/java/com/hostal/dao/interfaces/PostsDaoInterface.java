@@ -1,6 +1,7 @@
 package com.hostal.dao.interfaces;
 
 import com.hostal.persistence.Posts;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  */
 public interface PostsDaoInterface {
 
-    public List<Posts> getAllPosts();
+    public List<Posts> getAllPosts(PageRequest pageRequest);
     public List<Posts> searchPostsByWord(String search);
     public List<Posts> getRecentPosts(int limit);
     public List<Posts> getPostsByCategory(String category);

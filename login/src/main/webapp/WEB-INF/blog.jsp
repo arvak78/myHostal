@@ -34,7 +34,7 @@
 
                                 <table>
                                     <tr>
-                                    <c:forEach var="blog" items="${postsForm.posts}" varStatus="status">
+                                    <c:forEach var="blog" items="${postsForm.posts.pageList}" varStatus="status">
                                         <!--Blog Post-->
                                         <div class="col-md-6 col-sm-6 col-xs-12 featured-blog-post wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1500ms">
                                             <article class="inner-box hvr-float-shadow">
