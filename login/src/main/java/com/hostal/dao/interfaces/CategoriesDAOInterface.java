@@ -11,4 +11,6 @@ public interface CategoriesDAOInterface {
 
     public List<Categories> getCategories();
 
+    public void addCategory(Categories category );
+
 }

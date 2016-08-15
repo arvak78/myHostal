@@ -21,4 +21,9 @@ public class CategoriesManager {
         return categoriesDAO.getCategories();
     }
 
+    public void addCategory(Categories category) {
+        categoriesDAO.addCategory(category);
+    }
+
+
 }

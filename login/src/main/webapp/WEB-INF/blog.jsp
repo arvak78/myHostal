@@ -12,7 +12,7 @@
             <div class="text-center">
                 <h1>Our Blog</h1>
                 <div class="bread-crumb">
-                    <a href="index.html">Home</a> <i class="fa fa-angle-right"></i> <a class="current" href="#">Blog</a>
+                    <a href="index.html">Home</a> <i class="fa fa-angle-right"></i> <a class="current" href="/hello/blog/posts/">Blog</a>
                 </div>
             </div>
         </div>

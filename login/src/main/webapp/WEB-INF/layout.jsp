@@ -72,6 +72,10 @@
                     });
         }
 
+        function loadContactForm() {
+            $("#med-container").load("/hello/contact/information/");
+        }
+
     </script>
 
     <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -202,7 +206,7 @@
                                         <li><a href="blog-detail.html">Blog Details</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="javascript:loadContactForm()">Contact</a></li>
                             </ul>
                         </div>
                     </nav><!-- Main Menu End-->

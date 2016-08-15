@@ -6,10 +6,12 @@ import com.hostal.model.UserModel;
 import com.hostal.persistence.Role;
 import com.hostal.persistence.User;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Named;
+import java.util.List;
 
 @Named
 @Transactional("transactionManager")
@@ -33,5 +35,11 @@ public class UserDAOImpl implements UserDAOInterface {
 		}
 
 		sessionFactory.getCurrentSession().save(user);
+	}
+
+	public List<User> gelAllUsers() {
+		return sessionFactory.getCurrentSession().createCriteria(User.class).
+				addOrder(Order.asc("login")).list();
+
 	}
 }

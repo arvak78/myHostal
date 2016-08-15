@@ -35,6 +35,7 @@
 				<value>com.hostal.persistence.Clients</value>
 				<value>com.hostal.persistence.Posts</value>
 				<value>com.hostal.persistence.Categories</value>
+				<value>com.hostal.persistence.Contact</value>
 			</list>
 		</property>
 	</bean>

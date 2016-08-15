@@ -1,40 +1,32 @@
 package com.hostal.dao;
 
-import com.hostal.dao.interfaces.CategoriesDAOInterface;
-import com.hostal.persistence.Categories;
+import com.hostal.dao.interfaces.ContactDAOInterface;
+import com.hostal.persistence.Contact;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Named;
-import java.util.List;
 
 /**
- * CCategories DAO
+ * Created by Manel on 15/08/2016.
  */
 @Named
 @Transactional("transactionManager")
-public class CategoriesDAOImpl implements CategoriesDAOInterface {
+public class ContactDaoImpl implements ContactDAOInterface{
 
     @Autowired
     private SessionFactory sessionFactory;
 
-    public List<Categories> getCategories() {
-
-        return sessionFactory.getCurrentSession().createQuery("from Categories order by name asc").list();
-
-    }
-
-    public void addCategory(Categories category) {
+    public void addContactInfo(Contact contact) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        session.save(category);
+        session.save(contact);
 
         session.getTransaction().commit();
         session.flush();
         session.close();
     }
-
 }

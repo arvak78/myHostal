@@ -13,7 +13,7 @@ public class User {
     private String login;
     private String pwd;
     private Integer enabled;
-    //private Set<Role> roles = new HashSet<Role>(0);
+    private String email;
 
     @Id
     @Column(name = "USER_ID")
@@ -55,7 +55,15 @@ public class User {
         this.enabled = enabled;
     }
 
+    @Basic
+    @Column(name = "EMAIL")
+    public String getEmail() {
+        return email;
+    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     @Override
     public boolean equals(Object o) {
