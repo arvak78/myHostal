@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="template"
+                template="/WEB-INF/layout.jsp" >
+        <put-attribute name="title" value="" />
+        <put-attribute name="header" value="/WEB-INF/header.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/WEB-INF/footer.jsp" />
+
+        <put-list-attribute name="jslista" cascade="true">
+            <add-attribute value="/resources/js2/jquery.js" />
+            <add-attribute value="/resources/js2/bootstrap.min.js" />
+            <add-attribute value="/resources/js2/jquery.mixitup.min.js" />
+            <add-attribute value="/resources/js2/jquery.fancybox.pack.js" />
+            <add-attribute value="/resources/js2/owl.js" />
+            <add-attribute value="/resources/js2/jquery.plugin.min.js" />
+            <add-attribute value="/resources/js2/jquery.datepick.min.js" />
+            <add-attribute value="/resources/js2/wow.js" />
+            <add-attribute value="/resources/js2/script.js" />
+        </put-list-attribute>
+
+        <put-list-attribute name="csslista" cascade="true">
+            <add-attribute value="/resources/css/bootstrap.css" />
+            <add-attribute value="/resources/css/revolution-slider.css" />
+            <add-attribute value="/resources/css/style.css" />
+            <add-attribute value="/resources/css/bootstrap-margin-padding.css"  />
+            <add-attribute value="/resources/css/responsive.css" />
+            <add-attribute value="/resources/css/mediacion.css" />
+        </put-list-attribute>
+
+
+        <!--<put-attribute name="jsFiles" value="app.blog.jsFiles.tile" />-->
+        <!--<put-attribute name="cssFiles" value="app.blog.cssFiles.tile" />-->
+
+    </definition>
+
+
+    <definition name="contact" extends="template" >
+        <put-attribute name="title" value="Contact Manager" />
+        <put-attribute name="body" value="/WEB-INF/contact.jsp" />
+    </definition>
+
+    <definition name="blog" extends="template">
+        <put-attribute name="title" value="Blog" />
+        <put-attribute name="body" value="/WEB-INF/blog.jsp" />
+    </definition>
+
+    <definition name="post" extends="template">
+        <put-attribute name="title" value="Blog" />
+        <put-attribute name="body" value="/WEB-INF/post.jsp" />
+    </definition>
+
+
+</tiles-definitions>

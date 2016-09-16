@@ -40,7 +40,7 @@ public class BlogController {
         postsForm.setPosts(postManager.getAllPosts());
         postsForm.setSearchWord(null);
 
-        return new ModelAndView("layout", "postsForm", postsForm);
+        return new ModelAndView("blog", "postsForm", postsForm);
     }
 
     @RequestMapping(value = "/showcategory")
@@ -49,15 +49,15 @@ public class BlogController {
         return new ModelAndView("blog", "postsForm", postsForm);
     }
 
-    @RequestMapping("/post")
-    public ModelAndView post() {
-
-        return new ModelAndView("post", "postsForm", postsForm);
-    }
+//    @RequestMapping("/post")
+//    public ModelAndView post() {
+//
+//        return new ModelAndView("post", "postsForm", postsForm);
+//    }
 
     @RequestMapping(value="/paint/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public ModelAndView paintSelectedPost(@PathVariable int id) {
+    public ModelAndView paintSelectedPost(@RequestParam int id) {
 
         for (Posts mipost : postsForm.getPosts()) {
             if (id == mipost.getId()) {
@@ -66,7 +66,7 @@ public class BlogController {
             }
         }
 
-        return new ModelAndView("blog", "postsForm", postsForm);
+        return new ModelAndView("post", "postsForm", postsForm);
 
     }
 
@@ -77,7 +77,7 @@ public class BlogController {
         postsForm.setPosts(postManager.searchByWord(search));
         postsForm.setSearchWord(search);
 
-        return new ModelAndView("layout", "postsForm", postsForm);
+        return new ModelAndView("blog", "postsForm", postsForm);
     }
 
     @RequestMapping(value="/categoryPost/{category}", method = RequestMethod.POST)

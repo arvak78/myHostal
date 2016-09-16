@@ -2,6 +2,14 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<tiles:importAttribute name="cssList"/><tiles:importAttribute name="jsList"/>
+<head>
+    <c:forEach var="css" items="${cssList}">
+        <link rel="stylesheet" type="text/css" href="<c:url value="${css}"/>">
+    </c:forEach>
+</head>
+
 
 <!--Contact Us Section-->
 <div class="sidebar-page">
