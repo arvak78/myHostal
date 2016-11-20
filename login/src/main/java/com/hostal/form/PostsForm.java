@@ -14,6 +14,7 @@ public class PostsForm {
     private List<Categories> categories;
     private String searchWord;
     private Posts selectedPost;
+    private int page;
 
     public List<Posts> getPosts() {
         return posts;
@@ -45,5 +46,13 @@ public class PostsForm {
 
     public void setSelectedPost(Posts selectedPost) {
         this.selectedPost = selectedPost;
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
     }
 }

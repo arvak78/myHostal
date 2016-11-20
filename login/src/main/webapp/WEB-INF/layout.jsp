@@ -72,6 +72,14 @@
                     });
         }
 
+        function getPage(page) {
+            //$.post("/hello/blog/pagePost/" + page);
+            alert("a");
+            var search = $("#search").val();
+            alert("b" + search);
+            $.post("/hello/blog/pagePost/" + page);
+        }
+
         function loadContactForm() {
             $("#med-container").load("/hello/contact/information/");
         }
@@ -198,14 +206,7 @@
                                         <li><a href="faq.html">FAQ</a></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="blog.html">Blog</a>
-                                    <ul>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="blog-two-column.html">Blog Two Column</a></li>
-                                        <li><a href="blog-three-column.html">Blog Three Column</a></li>
-                                        <li><a href="blog-detail.html">Blog Details</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="${pageContext.request.contextPath}/blog/posts">Blog</a></li>
                                 <li><a href="javascript:loadContactForm()">Contact</a></li>
                             </ul>
                         </div>

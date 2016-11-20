@@ -10,9 +10,11 @@ import java.util.List;
 public interface PostsDaoInterface {
 
     public List<Posts> getAllPosts();
+    public List<Posts> getPagePosts(int page);
     public List<Posts> searchPostsByWord(String search);
     public List<Posts> getRecentPosts(int limit);
     public List<Posts> getPostsByCategory(String category);
     public void addVisit(int id);
+    public void savePost(Posts posts);
 
 }

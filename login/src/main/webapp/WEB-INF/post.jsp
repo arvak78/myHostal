@@ -17,7 +17,7 @@
                         <div class="featured-blog-post wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
                             <article class="inner-box">
                                 <figure class="image">
-                                    <a href="blog-detail.html"><img src="${pageContext.request.contextPath}/resources/images/blog/blog-image-4.jpg" alt=""></a>
+                                    <a href="${pageContext.request.contextPath}/blog/posts"><img src="${pageContext.request.contextPath}/resources/images/blog/blog-image-4.jpg" alt=""></a>
                                 </figure>
                                 <div class="post-lower">
                                     <div class="post-header">

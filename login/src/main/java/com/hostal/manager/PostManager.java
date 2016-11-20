@@ -10,14 +10,20 @@ import java.util.List;
 /**
  * Created by Manel on 14/04/2016.
  */
-@Named
+@Named(value = "postManager")
 public class PostManager {
 
     @Inject
     public PostsDaoInterface postDAO;
 
+    public static final int MAX_PAGE_POSTS = 6;
+
     public List<Posts> getAllPosts() {
         return postDAO.getAllPosts();
+    }
+
+    public List<Posts> getPagePosts(int page) {
+        return postDAO.getPagePosts(page);
     }
 
     public List<Posts> searchByWord(String search) {
@@ -30,6 +36,10 @@ public class PostManager {
 
     public void addVisit(int id) {
         postDAO.addVisit(id);
+    }
+
+    public void savePost(Posts post) {
+        postDAO.savePost(post);
     }
 
 

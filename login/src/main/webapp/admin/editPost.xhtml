@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<p:dialog header="Post Info" widgetVar="postDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+	<p:outputPanel id="postDetail" style="text-align:left;">
+		<p:panelGrid  columns="1" rendered="#{not empty dtBasicView.selectedPost}" columnClasses="label,value">
+
+			<f:facet name="header">
+				<h:graphicImage width="180" height="70" value="#{pageContext.request.contextPath}/./resources/images/blog/#{dtBasicView.selectedPost.urlImage}"/>
+			</f:facet>
+
+			<h:inputText value="#{dtBasicView.selectedPost.description}" pt:placeholder="descripcion"/>
+
+			<p:editor id="editor" widgetVar="editorWidget" value="#{dtBasicView.selectedPost.body}" width="600" />
+
+			<h:inputText value="#{dtBasicView.selectedPost.user}" />
+
+			<p:commandButton value="Guardar"  style="background-color: darkgreen" title="Guardar"
+				actionListener="#{dtBasicView.savePost}"/>
+
+		</p:panelGrid>
+	</p:outputPanel>
+</p:dialog>
+
+</html>

@@ -30,7 +30,7 @@ public class BlogController {
     @PostConstruct
     private void init() {
         postsForm = new PostsForm();
-        postsForm.setPosts(postManager.getAllPosts());
+        postsForm.setPosts(postManager.getPagePosts(0));
         postsForm.setCategories(categoriesManager.getCategories());
     }
 
@@ -85,6 +85,15 @@ public class BlogController {
     public ModelAndView getCategoriesPost(@PathVariable String category) {
 
         postsForm.setPosts(postManager.searchByCategories(category));
+
+        return new ModelAndView("blog", "postsForm", postsForm);
+    }
+
+    @RequestMapping(value="/pagePost/{page}", method = RequestMethod.POST)
+    @ResponseBody
+    public ModelAndView getPagePost(@RequestParam int page) {
+
+        postsForm.setPosts(postManager.getPagePosts(page));
 
         return new ModelAndView("blog", "postsForm", postsForm);
     }

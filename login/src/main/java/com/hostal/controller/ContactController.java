@@ -61,7 +61,7 @@ public class ContactController {
         contact.setCreate(new Date());
         contactManager.addContact(contact);
 
-        return new ModelAndView("contact");
+        return new ModelAndView("blog");
     }
 
 }

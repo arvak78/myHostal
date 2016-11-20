@@ -1,12 +1,14 @@
 package com.hostal.dao;
 
 import com.hostal.dao.interfaces.PostsDaoInterface;
+import com.hostal.manager.PostManager;
 import com.hostal.persistence.Posts;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Named;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,9 +23,27 @@ public class PostsDaoImpl implements PostsDaoInterface {
 
     public List<Posts> getAllPosts() {
 
-        List<Posts> postList = (List<Posts>)sessionFactory.getCurrentSession().createQuery("from Posts ").list();
+        return (List<Posts>)sessionFactory.getCurrentSession().createQuery("from Posts ").list();
 
-        return postList;
+    }
+
+    public List<Posts> getPagePosts(int page) {
+
+        int min = 0;
+        int max = 0;
+
+        if (page == 0) {
+            return new ArrayList<Posts>();
+        } else {
+            max = page * PostManager.MAX_PAGE_POSTS;
+            min = max - (PostManager.MAX_PAGE_POSTS - 1);
+        }
+
+        return (List<Posts>)sessionFactory.getCurrentSession().
+                createQuery("from Posts ").
+                setFirstResult(min).
+                setMaxResults(max).
+                list();
 
     }
 
@@ -49,6 +69,10 @@ public class PostsDaoImpl implements PostsDaoInterface {
 
     public List<Posts> getPostsByCategory(String category) {
         return sessionFactory.getCurrentSession().createQuery("from Posts where categories = " + category + " order by created desc ").list();
+    }
+
+    public void savePost(Posts post) {
+        sessionFactory.getCurrentSession().save(post);
     }
 
 }

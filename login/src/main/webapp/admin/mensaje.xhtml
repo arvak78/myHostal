@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head></h:head>
+<h:body>
+	<h:form>
+		<p:growl id="growl" showDetail="true" sticky="true" />
+
+		<p:panel header="Growl">
+			<h:panelGrid columns="2" cellpadding="5">
+				<p:outputLabel for="msg" value="Message:" />
+				<p:inputText id="msg" value="#{growView.message}" required="true" />
+			</h:panelGrid>
+
+			<p:commandButton value="Save" actionListener="#{growView.saveMessage}" update="growl" />
+		</p:panel>
+	</h:form>
+</h:body>
+</html>
