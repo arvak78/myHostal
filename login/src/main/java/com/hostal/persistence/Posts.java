@@ -1,9 +1,6 @@
 package com.hostal.persistence;
 
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
 /**

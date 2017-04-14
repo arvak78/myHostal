@@ -22,6 +22,10 @@ public class PostManager {
         return postDAO.getAllPosts();
     }
 
+    public int getAllPostsSize() {
+        return postDAO.getAllPostsSize();
+    }
+
     public List<Posts> getPagePosts(int page) {
         return postDAO.getPagePosts(page);
     }

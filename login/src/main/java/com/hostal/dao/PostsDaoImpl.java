@@ -3,7 +3,9 @@ package com.hostal.dao;
 import com.hostal.dao.interfaces.PostsDaoInterface;
 import com.hostal.manager.PostManager;
 import com.hostal.persistence.Posts;
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,22 +29,28 @@ public class PostsDaoImpl implements PostsDaoInterface {
 
     }
 
+    public int getAllPostsSize() {
+
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Posts.class);
+        criteria.setProjection(Projections.rowCount());
+        return ((Long)criteria.uniqueResult()).intValue();
+
+    }
+
     public List<Posts> getPagePosts(int page) {
 
         int min = 0;
-        int max = 0;
 
         if (page == 0) {
             return new ArrayList<Posts>();
         } else {
-            max = page * PostManager.MAX_PAGE_POSTS;
-            min = max - (PostManager.MAX_PAGE_POSTS - 1);
+            min = (page * PostManager.MAX_PAGE_POSTS) - PostManager.MAX_PAGE_POSTS;
         }
 
-        return (List<Posts>)sessionFactory.getCurrentSession().
+        return sessionFactory.getCurrentSession().
                 createQuery("from Posts ").
                 setFirstResult(min).
-                setMaxResults(max).
+                setMaxResults(PostManager.MAX_PAGE_POSTS).
                 list();
 
     }

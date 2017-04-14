@@ -10,6 +10,7 @@ import java.util.List;
 public interface PostsDaoInterface {
 
     public List<Posts> getAllPosts();
+    public int getAllPostsSize();
     public List<Posts> getPagePosts(int page);
     public List<Posts> searchPostsByWord(String search);
     public List<Posts> getRecentPosts(int limit);

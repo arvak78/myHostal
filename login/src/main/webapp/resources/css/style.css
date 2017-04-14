@@ -123,6 +123,22 @@ p{
 	margin:0 auto;
 }
 
+.sidebar {
+	top: 190px;
+	right: -75px;
+	width: 250px;
+	position: absolute;
+	padding-top: 20px;
+}
+
+.blog-auto-container{
+	position:static;
+	max-width:1000px;
+	padding:0px 15px;
+	margin:0 auto;
+	margin-left: inherit;
+}
+
 .page-wrapper{
 	position:relative;
 	margin:0 auto;
@@ -3976,4 +3992,8 @@ img {
 
 .practise-style2-4column .practise-area:hover .practise-details {
 	bottom: 4px;
+}
+
+@media only screen and (max-device-width: 480px) {
+	.sidebar{display:none;}
 }

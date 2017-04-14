@@ -30,15 +30,18 @@ public class BlogController {
     @PostConstruct
     private void init() {
         postsForm = new PostsForm();
-        postsForm.setPosts(postManager.getPagePosts(0));
+        postsForm.setPage(1);
         postsForm.setCategories(categoriesManager.getCategories());
     }
 
     @RequestMapping("/posts")
     public ModelAndView showPosts() {
 
-        postsForm.setPosts(postManager.getAllPosts());
+        postsForm.setPosts(postManager.getPagePosts(1));
+        postsForm.setPage(1);
         postsForm.setSearchWord(null);
+        postsForm.setPostsSize(postManager.getAllPostsSize());
+        postsForm.calcPagination();
 
         return new ModelAndView("layout", "postsForm", postsForm);
     }
@@ -89,11 +92,14 @@ public class BlogController {
         return new ModelAndView("blog", "postsForm", postsForm);
     }
 
-    @RequestMapping(value="/pagePost/{page}", method = RequestMethod.POST)
+    @RequestMapping(value="/pagePost", method = RequestMethod.POST)
     @ResponseBody
     public ModelAndView getPagePost(@RequestParam int page) {
 
         postsForm.setPosts(postManager.getPagePosts(page));
+        postsForm.setPostsSize(postManager.getAllPostsSize());
+        postsForm.setPage(page);
+        postsForm.calcPagination();
 
         return new ModelAndView("blog", "postsForm", postsForm);
     }

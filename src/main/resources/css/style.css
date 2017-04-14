@@ -3977,3 +3977,7 @@ img {
 .practise-style2-4column .practise-area:hover .practise-details {
 	bottom: 4px;
 }
+
+@media only screen and (max-device-width: 480px) {
+	.sidebar{display:none;}
+}

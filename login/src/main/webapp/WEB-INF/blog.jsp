@@ -6,25 +6,15 @@
 
 
 
-    <!--Page Title-->
-    <section class="page-title" style="background-image:url(${pageContext.request.contextPath}/resources/images/parallax/image-8.jpg);">
-        <div class="auto-container">
-            <div class="text-center">
-                <h1>Our Blog</h1>
-                <div class="bread-crumb">
-                    <a href="index.html">Home</a> <i class="fa fa-angle-right"></i> <a class="current" href="/hello/blog/posts/">Blog</a>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!--Sidebar Page-->
     <div class="sidebar-page pb-0">
-        <div class="auto-container">
+        <div class="blog-auto-container">
             <div class="row clearfix">
 
                 <!--Content Side-->
-                <div class="col-lg-9 col-md-8 col-sm-6 col-xs-12">
+                <div class="col-lg-11 col-md-8 col-sm-6 col-xs-12" id="blogContent">
 
                     <!--Default Section-->
                     <section class="default-section blog-section pt-0 pb-0">
@@ -67,12 +57,10 @@
                         <!--Pagination-->
                         <div class="pager-outer">
                             <ul class="pagination mt-0 mb-50">
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li class="active"><a href="#">3</a></li>
-                                <li><a href="#">-</a></li>
-                                <li><a href="#">7</a></li>
-                                <li><a href="#">8</a></li>
+                                <li name="pages" id="pag${postsForm.initialPage}" class="active"><a href="javascript:getPage(${postsForm.initialPage})">${postsForm.initialPage}</a></li>
+                                <c:forEach var="i" begin="1" end="${postsForm.finalPage - 1}">
+                                    <li name="pages" id="pag${postsForm.initialPage + i}"><a href="javascript:getPage(${postsForm.initialPage + i})">${postsForm.initialPage + i}</a></li>
+                                </c:forEach>
                                 <li><a href="#">Next</a></li>
                             </ul>
                         </div>
@@ -82,7 +70,7 @@
                 <!--Content Side-->
 
                 <!--Side Bar -->
-                <c:import url="/WEB-INF/blogSideBar.jsp" />
+                <%--<c:import url="/WEB-INF/blogSideBar.jsp" />--%>
 
 
             </div>

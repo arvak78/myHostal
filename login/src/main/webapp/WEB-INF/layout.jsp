@@ -68,20 +68,31 @@
         function getCategory(category) {
             $.post("/hello/blog/categoryPost/" + category,
                     function(data, status){
-                        $("#med-container").load("/hello/blog/showcategory/");
+                        $("#blogPosts").html(data);
                     });
         }
 
         function getPage(page) {
-            //$.post("/hello/blog/pagePost/" + page);
-            alert("a");
-            var search = $("#search").val();
-            alert("b" + search);
-            $.post("/hello/blog/pagePost/" + page);
+            $.post("/hello/blog/pagePost", {page: page}, function(data, status) {
+                $("#blogPosts").html(data);
+                $("html, body").animate({scrollTop: 100}, "1000");
+                $('li[name=pages]').each(function() {
+                    $( this ).removeClass("active");
+                });
+                $("#pag" + page).addClass("active");
+            });
+        }
+
+        function scrollToTop() {
+            $("html, body").animate({scrollTop: 100}, "1000");
         }
 
         function loadContactForm() {
-            $("#med-container").load("/hello/contact/information/");
+//            $("#med-container").html("/hello/contact/information/");
+            $.post("/hello/contact/information/",
+                    function(data, status){
+                        $("#med-container").html(data);
+                    });
         }
 
     </script>
@@ -223,12 +234,15 @@
     </header><!--End Main Header -->
 
 
-    <div id="med-container" class="med-container">
+    <div id="med-container" >
 
-        <c:import url="/WEB-INF/blog.jsp" />
+        <c:import url="/WEB-INF/blogLayout.jsp" />
 
     </div>
 
+    <%--<div id="sideBar" class="sidebar">--%>
+        <%--<c:import url="/WEB-INF/blogSideBar.jsp" />--%>
+    <%--</div>--%>
 
 
     <!--Main Footer-->
@@ -319,7 +333,7 @@
 <!--End pagewrapper-->
 
 <!--Scroll to top-->
-<div class="scroll-to-top"><span class="fa fa-arrow-up"></span></div>
+<div class="scroll-to-top" onclick="javascript:scrollToTop();"><span class="fa fa-arrow-up"></span></div>
 
 
 

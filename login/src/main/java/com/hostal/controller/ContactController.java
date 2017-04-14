@@ -38,7 +38,7 @@ public class ContactController {
     @RequestMapping("/information")
     public ModelAndView getInformation() {
 
-        return new ModelAndView("contact");
+        return new ModelAndView("principal");
     }
 
     @RequestMapping("/sendmail")
@@ -61,7 +61,7 @@ public class ContactController {
         contact.setCreate(new Date());
         contactManager.addContact(contact);
 
-        return new ModelAndView("blog");
+        return new ModelAndView("principal");
     }
 
 }

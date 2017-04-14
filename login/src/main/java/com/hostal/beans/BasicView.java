@@ -95,6 +95,7 @@ public class BasicView implements Serializable {
 
         service.savePost(selectedPost);
         info("Post modificado");
+        addMessage("Welcome to Primefaces!!");
 
     }
 }
