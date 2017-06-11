@@ -1,6 +1,7 @@
 package com.hostal.beans;
 
 import com.hostal.persistence.Posts;
+import com.hostal.service.BlogService;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 

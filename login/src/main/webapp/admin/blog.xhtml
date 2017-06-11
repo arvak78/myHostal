@@ -11,6 +11,7 @@
 	<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" escape="true" />
 
 	<p:commandButton value="Nuevo Post"  style="background-color: #3c763d" title="Nuevo"/>
+	<p:commandButton action="#{loginView.logout}" value="Logout"  style="background-color: red"  />
 
 	<p:dataTable var="post" value="#{dtBasicView.allPosts}" id="mitabla">
 

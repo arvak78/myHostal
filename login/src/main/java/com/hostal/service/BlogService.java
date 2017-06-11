@@ -1,4 +1,4 @@
-package com.hostal.beans;
+package com.hostal.service;
 
 import com.hostal.manager.PostManager;
 import com.hostal.persistence.Posts;

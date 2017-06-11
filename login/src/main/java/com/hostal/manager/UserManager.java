@@ -27,4 +27,8 @@ public class UserManager {
 		return userDAO.gelAllUsers();
 	}
 
+	public boolean validateUser(String user, String password) {
+		return userDAO.validate(user, password);
+	}
+
 }

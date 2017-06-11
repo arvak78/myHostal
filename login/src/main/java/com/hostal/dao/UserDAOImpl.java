@@ -5,6 +5,7 @@ import com.hostal.dao.interfaces.UserDAOInterface;
 import com.hostal.model.UserModel;
 import com.hostal.persistence.Role;
 import com.hostal.persistence.User;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +38,19 @@ public class UserDAOImpl implements UserDAOInterface {
 		sessionFactory.getCurrentSession().save(user);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<User> gelAllUsers() {
 		return sessionFactory.getCurrentSession().createCriteria(User.class).
 				addOrder(Order.asc("login")).list();
 
 	}
+
+	public boolean validate(String user, String password) {
+
+		Query query = sessionFactory.getCurrentSession().createQuery("from User where login = '" + user
+				+ "' and pwd = '" + password + "')");
+
+		return !query.list().isEmpty();
+	}
+
 }

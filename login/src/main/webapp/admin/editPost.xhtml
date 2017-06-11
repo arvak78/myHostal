@@ -19,7 +19,7 @@
 			<h:inputText value="#{dtBasicView.selectedPost.user}" />
 
 			<p:commandButton value="Guardar"  style="background-color: darkgreen" title="Guardar"
-				actionListener="#{dtBasicView.savePost}"/>
+				actionListener="#{dtBasicView.savePost}" oncomplete="postDialog.hide();"/>
 
 		</p:panelGrid>
 	</p:outputPanel>
